@@ -46,6 +46,7 @@ public class UniversityManager {
                     displayClassRoomMenu(scanner);
                     break;
                 case 6:
+                    displayDashBoardMenu(scanner);
                     break;
                 case 7:
                     System.exit(0);
@@ -217,6 +218,40 @@ public class UniversityManager {
                     return;
                 default:
                     System.err.println("Vui lòng chọn từ 1 - 9");
+            }
+        } while (true);
+    }
+
+    public static void displayDashBoardMenu(Scanner scanner) {
+        do {
+            System.out.println("************************ DASHBOARD MENU *************************");
+            System.out.println("1. Thống kê số sinh viên, giảng viên, khóa học, lớp học");
+            System.out.println("2. Top 3 khóa học có nhiều sinh viên nhất");
+            System.out.println("3. Top 3 lớp học có nhiều sinh viên nhất");
+            System.out.println("4. Top 3 giảng viên dạy nhiều sinh viên nhất");
+            System.out.println("5. Top 3 sinh viên đăng ký học nhiều nhất");
+            System.out.println("6. Thoát");
+            int choice = Validator.validateInputInteger(scanner, "Lựa chọn từ 1 - 6: ");
+            switch (choice) {
+                case 1:
+                    DashBoardBusiness.showStatistic();
+                    break;
+                case 2:
+                    DashBoardBusiness.top3CoursesMostStudents();
+                    break;
+                case 3:
+                    DashBoardBusiness.top3ClassRoomMostStudents();
+                    break;
+                case 4:
+                    DashBoardBusiness.top3TeacherMostStudents();
+                    break;
+                case 5:
+                    DashBoardBusiness.top3CourseRegisterMostStudents();
+                    break;
+                case 6:
+                    return;
+                default:
+                    System.err.println("Vui lòng chọn từ 1 - 6");
             }
         } while (true);
     }
